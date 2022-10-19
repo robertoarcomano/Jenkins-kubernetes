@@ -3,7 +3,6 @@ pipeline {
   agent {
     kubernetes {
       cloud "kubernetes"
-
     }
   }
   environment {
@@ -20,10 +19,12 @@ pipeline {
     stage('check1') {
       steps {
         podTemplate(cloud: 'kubernetes', containers: [containerTemplate(args: '9999999', command: 'sleep', image: 'busybox', name: 'busybox')], label: 'template1', name: 'template1', namespace: 'devops') {
-          script {
-            sh 'hostname'
-            sh 'sleep 10'
-            sh 'cat /etc/issue'
+          node("template1") {
+            script {
+              sh 'hostname'
+              sh 'sleep 10'
+              sh 'cat /etc/issue'
+            }
           }
         }
       }
