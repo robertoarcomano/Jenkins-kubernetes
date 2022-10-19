@@ -10,6 +10,7 @@ pipeline {
           labels:
             some-label: some-label-value
           namespace: devops
+          name: jenkins-kubernetes-ubuntu
         spec:
           containers:
           - name: ubuntu
@@ -25,6 +26,7 @@ pipeline {
           labels:
             some-label: some-label-value
           namespace: devops
+          name: jenkins-kubernetes-busybox
         spec:
           containers:
           - name: busybox
