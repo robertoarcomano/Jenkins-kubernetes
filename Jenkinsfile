@@ -34,7 +34,7 @@ pipeline {
             sh 'cat /etc/issue'
           }
         }
-        container("container3) {
+        container("container3") {
           script {
             echo 'container3: '
             sh 'hostname'
