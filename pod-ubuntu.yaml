@@ -7,7 +7,7 @@ metadata:
   name: jenkins-kubernetes-ubuntu
 spec:
   containers:
-    - name: ubuntu
+    - name: container1
       image: ubuntu
       command:
         - cat

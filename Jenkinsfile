@@ -19,10 +19,9 @@ pipeline {
   stages {
     stage('check1') {
       steps {
-        container("ubuntu") {
+        container("container1") {
           script {
             sh 'hostname'
-            sh 'sleep 10'
             sh 'cat /etc/issue'
           }
         }
