@@ -17,3 +17,13 @@ spec:
       command:
         - cat
       tty: true
+    - name: container3
+      image: httpd
+      command:
+        - cat
+      tty: true
+    - name: container4
+      image: debian
+      command:
+        - cat
+      tty: true
