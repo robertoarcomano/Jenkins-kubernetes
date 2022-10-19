@@ -8,7 +8,12 @@ metadata:
 spec:
   containers:
     - name: container1
-      image: busybox
+      image: nginx
+      command:
+        - cat
+      tty: true
+    - name: container2
+      image: ubuntu
       command:
         - cat
       tty: true

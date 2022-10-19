@@ -3,7 +3,7 @@ pipeline {
   agent {
     kubernetes {
       cloud "kubernetes"
-      yamlFile 'pod-ubuntu.yaml'
+      yamlFile 'pod.yaml'
     }
   }
   environment {
@@ -21,6 +21,14 @@ pipeline {
       steps {
         container("container1") {
           script {
+            echo 'container1: '
+            sh 'hostname'
+            sh 'cat /etc/issue'
+          }
+        }
+        container("container2") {
+          script {
+            echo 'container2: '
             sh 'hostname'
             sh 'cat /etc/issue'
           }
