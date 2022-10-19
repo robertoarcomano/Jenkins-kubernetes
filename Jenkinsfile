@@ -32,9 +32,9 @@ pipeline {
     VERSION=""
   }
   stages {
-    stage('ubuntu') {
+    stage('check1') {
       steps {
-        container("ubuntu") {
+        podTemplate(cloud: 'kubernetes', containers: [containerTemplate(args: '9999999', command: 'sleep', image: 'ubuntu', name: 'ubuntu')], label: 'template1', name: 'template1', namespace: 'devops') {
           script {
             sh 'hostname'
             sh 'cat /etc/issue'
