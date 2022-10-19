@@ -19,22 +19,6 @@ pipeline {
             - cat
             tty: true
         '''
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            some-label: some-label-value
-          namespace: devops
-          name: jenkins-kubernetes-busybox
-        spec:
-          containers:
-          - name: busybox
-            image: busybox
-            command:
-            - cat
-            tty: true
-        '''
     }
   }
   environment {
@@ -51,16 +35,6 @@ pipeline {
     stage('ubuntu') {
       steps {
         container("ubuntu") {
-          script {
-            sh 'hostname'
-            sh 'cat /etc/issue'
-          }
-        }
-      }
-    }
-    stage('busybox') {
-      steps {
-        container("busybox") {
           script {
             sh 'hostname'
             sh 'cat /etc/issue'
