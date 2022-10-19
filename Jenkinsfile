@@ -3,22 +3,7 @@ pipeline {
   agent {
     kubernetes {
       cloud "kubernetes"
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            some-label: some-label-value
-          namespace: devops
-          name: jenkins-kubernetes-ubuntu
-        spec:
-          containers:
-          - name: ubuntu
-            image: ubuntu
-            command:
-            - cat
-            tty: true
-        '''
+
     }
   }
   environment {
