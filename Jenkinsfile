@@ -2,9 +2,11 @@ pipeline {
     agent {
         kubernetes {
             cloud "kubernetes"
-            podTemplate(label: 'kubectl') {
-                node('kubectl') {
-                    sh 'Hello world!'
+            podTemplate {
+                node("kubectl") {
+                    stage('Run shell') {
+                        sh 'echo hello world'
+                    }
                 }
             }
         }
