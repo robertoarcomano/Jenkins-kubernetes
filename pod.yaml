@@ -7,4 +7,3 @@ spec:
     - name: bootvar-container
       image: ubuntu
       tty: true
-      command: ['cat']
