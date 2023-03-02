@@ -4,6 +4,13 @@ metadata:
   namespace: devops
 spec:
   containers:
-    - name: bootvar-container
+    - name: kubectl
       image: ubuntu
       tty: true
+      volumeMounts:
+        - name: kube_dir
+          mountPath: /root/.kube/config
+  volumes:
+    - name: kube_dir
+      hostPath:
+        path: /etc/kubernetes/admin.conf
