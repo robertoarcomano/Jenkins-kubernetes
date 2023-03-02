@@ -9,7 +9,7 @@ pipeline {
         stage("First") {
             steps {
                 container("kubectl") {
-                    sh "kubectl --help"
+                    sh "ls -lart"
                 }
             }
         }
