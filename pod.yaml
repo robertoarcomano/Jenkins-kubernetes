@@ -8,9 +8,9 @@ spec:
       image: ubuntu
       tty: true
       volumeMounts:
-        - name: kube_dir
+        - name: kubedir
           mountPath: /root/.kube/config
   volumes:
-    - name: kube_dir
+    - name: kubedir
       hostPath:
         path: /etc/kubernetes/admin.conf
