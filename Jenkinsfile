@@ -7,7 +7,7 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
-  namespace: build-ns
+  namespace: devops
   labels:
     job: bootvar-build-pod
 spec:
