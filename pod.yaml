@@ -7,4 +7,4 @@ spec:
     - name: bootvar-container
       image: bitnami/kubectl
       tty: true
-      command: ['cat']
+      command: ['kubectl']
