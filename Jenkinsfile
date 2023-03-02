@@ -1,31 +1,20 @@
-// Jenkinsfile for testing purposes
 pipeline {
   agent {
     kubernetes {
-      cloud "kubernetes"
-      yamlFile 'pod.yaml'
+      cloud 'kubernetes'
+      label 'mypod'
+      containerTemplate {
+        name 'maven'
+        image 'maven:3.3.9-jdk-8-alpine'
+        ttyEnabled true
+        command 'cat'
+      }
     }
   }
-  environment {
-    EMAIL_RECIPIENT="info@robertoarcomano.com"
-    EMAIL_TEST_SUBJECT="Test Masterit: "
-    EMAIL_BUILD_SUBJECT="Build Masterit: "
-    TEST_STATUS="FAILED"
-    BUILD_STATUS="FAILED"
-    EMAIL_SENDER="Jenkins - Oracle3 <info@robertoarcomano.com>"
-    OUTPUT=""
-    VERSION=""
-  }
   stages {
-    stage('check1') {
+    stage('Run maven') {
       steps {
-        container("container1") {
-          script {
-            echo 'kubectl: '
-            sh 'hostname'
-            sh 'kubectl --help'
-          }
-        }
+        sh 'mvn -version'
       }
     }
   }
