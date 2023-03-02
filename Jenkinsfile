@@ -1,9 +1,31 @@
-podTemplate(cloud: 'not-jenkins-source', label: 'hello-world' yaml: agentPodYaml.getWithContainers('python')) {
-  node('hello-world') {
-    sh "echo 'Hello World, I am running inside the Jenkins agent container'"
-    container('python'){
-      sh 'echo \'print("Hello from the python side.")\' > hello-world.py'
-      sh 'python hello-world.py'
-    }  
-  }
+pipeline {
+    agent {
+        kubernetes {
+            cloud "kubernetes"
+            label "build-pod"
+            yaml '''
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: build-ns
+  labels:
+    job: bootvar-build-pod
+spec:
+  containers:
+  - name: bootvar-container
+    image: alpine:latest
+    tty: true
+    command: ['cat']
+'''
+        }
+    }
+    stages {
+        stage("First") {
+            steps {
+                container("bootvar-container") {
+                    sh "ls -lart"
+                }
+            }
+        }
+    }
 }
