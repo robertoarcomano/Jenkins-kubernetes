@@ -23,7 +23,6 @@ pipeline {
           script {
             echo 'kubectl: '
             sh 'hostname'
-            sh 'kubectl --help'
           }
         }
       }
