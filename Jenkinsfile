@@ -5,5 +5,10 @@ pipeline {
         }
     }
     stages {
+        stage('Test') {
+          steps {
+            sh 'hostname'
+          }
+        }
     }
 }
