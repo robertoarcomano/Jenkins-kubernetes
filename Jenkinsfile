@@ -5,7 +5,7 @@ pipeline {
       label 'mypod'
       containerTemplate {
         name 'maven'
-        image 'maven:3.3.9-jdk-8-alpine'
+        image 'bitnami/kubectl'
         ttyEnabled true
         command 'cat'
       }
@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage('Run maven') {
       steps {
-        sh 'mvn -version'
+        sh 'kubectl --help'
       }
     }
   }
