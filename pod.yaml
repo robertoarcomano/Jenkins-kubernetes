@@ -1,29 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    some-label: some-label-value
   namespace: devops
-  name: jenkins-kubernetes-ubuntu
+  labels:
+    job: bootvar-build-pod
 spec:
   containers:
-    - name: container1
-      image: nginx
-      command:
-        - cat
+    - name: bootvar-container
+      image: alpine:latest
       tty: true
-    - name: container2
-      image: ubuntu
-      command:
-        - cat
-      tty: true
-    - name: container3
-      image: httpd
-      command:
-        - cat
-      tty: true
-    - name: container4
-      image: debian
-      command:
-        - cat
-      tty: true
+      command: ['cat']
