@@ -1,20 +1,9 @@
-pipeline {
-    agent {
-        kubernetes {
-            label 'jenkins-demo'
-            podTemplate {
-                volumes {
-                    secretVolume(secretName: 'some-secret', mountPath: '/some-secret')
-                }
-                containerTemplate {
-                    name 'dind-jdk8-maven3'
-                    image 'eu.gcr.io/jenkins-demo/dind-jdk8-maven3:v4'
-                    ttyEnabled true
-                    command 'cat'
-                }
-            }
-        }
-    }
-    stages {
-    }
+podTemplate(cloud: 'not-jenkins-source', label: 'hello-world' yaml: agentPodYaml.getWithContainers('python')) {
+  node('hello-world') {
+    sh "echo 'Hello World, I am running inside the Jenkins agent container'"
+    container('python'){
+      sh 'echo \'print("Hello from the python side.")\' > hello-world.py'
+      sh 'python hello-world.py'
+    }  
+  }
 }
