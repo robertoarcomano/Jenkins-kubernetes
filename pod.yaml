@@ -9,6 +9,4 @@ spec:
   containers:
     - name: container1
       image: bitnami/kubectl
-      command:
-        - cat
       tty: true
