@@ -2,7 +2,6 @@ pipeline {
     agent {
         kubernetes {
             cloud "kubernetes"
-            label "build-pod"
             yamlFile 'pod.yaml'
         }
     }
