@@ -5,7 +5,7 @@ pipeline {
             agent {
                 kubernetes {
                     cloud "kubernetes"
-                    podTemplate(cloud: 'kubernetes', inheritFrom: 'kubectl', label: 'kubectl', name: 'kubectl', namespace: 'devops') {
+                    podTemplate(cloud: 'kubernetes') {
                         stages {
                             stage("test") {
                                 steps {
