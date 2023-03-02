@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage("First") {
             steps {
-                container("bootvar-container") {
-                    sh "ls -lart"
+                container("kubectl") {
+                    sh "kubectl --help"
                 }
             }
         }
