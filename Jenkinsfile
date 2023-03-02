@@ -1,32 +1,20 @@
 pipeline {
-    agent none
-    stages {
-        stage("1.k8s") {
-            agent {
-                kubernetes {
-                    yaml podTemplate
-                    defaultContainer 'k8s'
+    agent {
+        kubernetes {
+            label 'jenkins-demo'
+            podTemplate {
+                volumes {
+                    secretVolume(secretName: 'some-secret', mountPath: '/some-secret')
+                }
+                containerTemplate {
+                    name 'dind-jdk8-maven3'
+                    image 'eu.gcr.io/jenkins-demo/dind-jdk8-maven3:v4'
+                    ttyEnabled true
+                    command 'cat'
                 }
             }
-            steps {
-                sh """
-                    mvn -version
-                """
-            }
         }
-        stage("2. k8s") {
-            agent { label 'k8s' }
-            steps {
-                sh """
-                    mvn -version
-                """
-            }
-        }
-        stage("win") {
-            agent { label 'windows' }
-            steps {
-                bat "dir"
-            }
-        }
+    }
+    stages {
     }
 }
