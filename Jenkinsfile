@@ -21,30 +21,9 @@ pipeline {
       steps {
         container("container1") {
           script {
-            echo 'container1: '
+            echo 'kubectl: '
             sh 'hostname'
-            sh 'cat /etc/issue'
-          }
-        }
-        container("container2") {
-          script {
-            echo 'container2: '
-            sh 'hostname'
-            sh 'cat /etc/issue'
-          }
-        }
-        container("container3") {
-          script {
-            echo 'container3: '
-            sh 'hostname'
-            sh 'cat /etc/issue'
-          }
-        }
-        container("container4") {
-          script {
-            echo 'container4: '
-            sh 'hostname'
-            sh 'cat /etc/issue'
+            sh 'kubectl --help'
           }
         }
       }
