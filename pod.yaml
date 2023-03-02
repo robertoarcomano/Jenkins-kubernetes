@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: bootvar-container
-      image: alpine:latest
+      image: bitnami/kubectl
       tty: true
       command: ['cat']
