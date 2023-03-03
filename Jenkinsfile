@@ -16,7 +16,7 @@ pipeline {
                     sh "ls -al"
                     sh "chmod 755 kubectl"
                     sh "./kubectl get pods"
-                    sh "cat"
+                    sh "top"
                 }
             }
         }
