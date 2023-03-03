@@ -2,7 +2,8 @@ pipeline {
     agent {
         kubernetes {
             cloud "kubernetes"
-            yamlFile 'pod.yaml'
+            inheritFrom 'kubectl'
+//             yamlFile 'pod.yaml'
         }
     }
     environment {

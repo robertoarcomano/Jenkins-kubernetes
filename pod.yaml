@@ -7,10 +7,3 @@ spec:
     - name: kubectl
       image: ubuntu
       tty: true
-      volumeMounts:
-        - name: kubedir
-          mountPath: /home1/jenkins/agent/workspace/Jenkins_kubernetes/.kube/config
-  volumes:
-    - name: kubedir
-      hostPath:
-        path: /etc/kubernetes/admin.conf
