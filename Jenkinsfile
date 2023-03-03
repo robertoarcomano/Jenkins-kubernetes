@@ -13,10 +13,10 @@ pipeline {
                     sh "apt install -y wget"
                     sh "pwd"
                     sh "wget https://dl.k8s.io/v1.26.2/bin/linux/arm64/kubectl"
+                    sh "top"
                     sh "ls -al"
                     sh "chmod 755 kubectl"
                     sh "./kubectl get pods"
-                    sh "top"
                 }
             }
         }
