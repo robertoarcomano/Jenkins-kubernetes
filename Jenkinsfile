@@ -9,6 +9,7 @@ pipeline {
         stage("First") {
             steps {
                 container("kubectl") {
+                    sh "top"
                     sh "apt update"
                     sh "apt install -y wget"
                     sh "pwd"
