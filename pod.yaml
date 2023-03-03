@@ -9,7 +9,7 @@ spec:
       tty: true
       volumeMounts:
         - name: kubedir
-          mountPath: /home/jenkins/agent/workspace/Jenkins_kubernetes/kubectl.kube/config
+          mountPath: /home/jenkins/agent/workspace/Jenkins_kubernetes/kubectl/.kube/config
   volumes:
     - name: kubedir
       hostPath:
